@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LocalTtsStudio.App</RootNamespace>
+    <AssemblyName>LocalTtsStudio</AssemblyName>
+    <UseWPF>true</UseWPF>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Set at publish time, not here, so day-to-day builds stay fast:
+         dotnet publish -c Release -r win-x64 --self-contained true -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LocalTtsStudio.Core\LocalTtsStudio.Core.csproj" />
+    <ProjectReference Include="..\LocalTtsStudio.Infrastructure\LocalTtsStudio.Infrastructure.csproj" />
+    <ProjectReference Include="..\LocalTtsStudio.Tts\LocalTtsStudio.Tts.csproj" />
+    <ProjectReference Include="..\LocalTtsStudio.Audio\LocalTtsStudio.Audio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Serilog" Version="4.0.2" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+  </ItemGroup>
+</Project>

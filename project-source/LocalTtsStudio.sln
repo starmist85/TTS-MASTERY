@@ -1,0 +1,66 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0A33D0F3-ACA0-485B-BD27-99BC59FF1F06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{51907248-6703-4200-8E62-6A21A75871FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalTtsStudio.Core", "src\LocalTtsStudio.Core\LocalTtsStudio.Core.csproj", "{DD41AF46-484A-412C-B9D8-0E354E0A3F9D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalTtsStudio.Infrastructure", "src\LocalTtsStudio.Infrastructure\LocalTtsStudio.Infrastructure.csproj", "{823CA1B2-64F3-46DC-9C65-2343FEF16408}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalTtsStudio.Tts", "src\LocalTtsStudio.Tts\LocalTtsStudio.Tts.csproj", "{6541D7C7-B411-498C-BB25-C3813E9FE6DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalTtsStudio.Audio", "src\LocalTtsStudio.Audio\LocalTtsStudio.Audio.csproj", "{7C6665CF-4A22-4767-98AF-9ACE298E061D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalTtsStudio.App", "src\LocalTtsStudio.App\LocalTtsStudio.App.csproj", "{01FD5482-6C3F-47F0-9A38-A0547154CCCE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalTtsStudio.Tests", "tests\LocalTtsStudio.Tests\LocalTtsStudio.Tests.csproj", "{F2CBECDB-1F65-4883-B908-3137A98DB96A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD41AF46-484A-412C-B9D8-0E354E0A3F9D}.Debug|x64.ActiveCfg = Debug|x64
+		{DD41AF46-484A-412C-B9D8-0E354E0A3F9D}.Debug|x64.Build.0 = Debug|x64
+		{DD41AF46-484A-412C-B9D8-0E354E0A3F9D}.Release|x64.ActiveCfg = Release|x64
+		{DD41AF46-484A-412C-B9D8-0E354E0A3F9D}.Release|x64.Build.0 = Release|x64
+		{823CA1B2-64F3-46DC-9C65-2343FEF16408}.Debug|x64.ActiveCfg = Debug|x64
+		{823CA1B2-64F3-46DC-9C65-2343FEF16408}.Debug|x64.Build.0 = Debug|x64
+		{823CA1B2-64F3-46DC-9C65-2343FEF16408}.Release|x64.ActiveCfg = Release|x64
+		{823CA1B2-64F3-46DC-9C65-2343FEF16408}.Release|x64.Build.0 = Release|x64
+		{6541D7C7-B411-498C-BB25-C3813E9FE6DD}.Debug|x64.ActiveCfg = Debug|x64
+		{6541D7C7-B411-498C-BB25-C3813E9FE6DD}.Debug|x64.Build.0 = Debug|x64
+		{6541D7C7-B411-498C-BB25-C3813E9FE6DD}.Release|x64.ActiveCfg = Release|x64
+		{6541D7C7-B411-498C-BB25-C3813E9FE6DD}.Release|x64.Build.0 = Release|x64
+		{7C6665CF-4A22-4767-98AF-9ACE298E061D}.Debug|x64.ActiveCfg = Debug|x64
+		{7C6665CF-4A22-4767-98AF-9ACE298E061D}.Debug|x64.Build.0 = Debug|x64
+		{7C6665CF-4A22-4767-98AF-9ACE298E061D}.Release|x64.ActiveCfg = Release|x64
+		{7C6665CF-4A22-4767-98AF-9ACE298E061D}.Release|x64.Build.0 = Release|x64
+		{01FD5482-6C3F-47F0-9A38-A0547154CCCE}.Debug|x64.ActiveCfg = Debug|x64
+		{01FD5482-6C3F-47F0-9A38-A0547154CCCE}.Debug|x64.Build.0 = Debug|x64
+		{01FD5482-6C3F-47F0-9A38-A0547154CCCE}.Release|x64.ActiveCfg = Release|x64
+		{01FD5482-6C3F-47F0-9A38-A0547154CCCE}.Release|x64.Build.0 = Release|x64
+		{F2CBECDB-1F65-4883-B908-3137A98DB96A}.Debug|x64.ActiveCfg = Debug|x64
+		{F2CBECDB-1F65-4883-B908-3137A98DB96A}.Debug|x64.Build.0 = Debug|x64
+		{F2CBECDB-1F65-4883-B908-3137A98DB96A}.Release|x64.ActiveCfg = Release|x64
+		{F2CBECDB-1F65-4883-B908-3137A98DB96A}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD41AF46-484A-412C-B9D8-0E354E0A3F9D} = {0A33D0F3-ACA0-485B-BD27-99BC59FF1F06}
+		{823CA1B2-64F3-46DC-9C65-2343FEF16408} = {0A33D0F3-ACA0-485B-BD27-99BC59FF1F06}
+		{6541D7C7-B411-498C-BB25-C3813E9FE6DD} = {0A33D0F3-ACA0-485B-BD27-99BC59FF1F06}
+		{7C6665CF-4A22-4767-98AF-9ACE298E061D} = {0A33D0F3-ACA0-485B-BD27-99BC59FF1F06}
+		{01FD5482-6C3F-47F0-9A38-A0547154CCCE} = {0A33D0F3-ACA0-485B-BD27-99BC59FF1F06}
+		{F2CBECDB-1F65-4883-B908-3137A98DB96A} = {51907248-6703-4200-8E62-6A21A75871FD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9BB1891-F204-4FAA-B44C-77C32E50C3D2}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Core holds contracts and domain types only: entities, interfaces, DTOs, the
+    language model, engine capabilities and the worker protocol. It references no
+    other project and no infrastructure package, which is what keeps the dependency
+    graph acyclic and the domain testable without a database or a Python process.
+  -->
+  <PropertyGroup>
+    <RootNamespace>LocalTtsStudio.Core</RootNamespace>
+  </PropertyGroup>
+</Project>

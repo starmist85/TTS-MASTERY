@@ -1,0 +1,35 @@
+<Project>
+  <!--
+    Shared build settings for every project in the solution.
+
+    Everything targets net8.0-windows: .NET 8 is the LTS release Visual Studio 2022
+    supports cleanly, and the -windows TFM is required for WPF. Core does not strictly
+    need it, but keeping one TFM across the solution avoids a class of cross-targeting
+    friction (a net8.0 test project cannot reference a net8.0-windows project) that buys
+    nothing on a Windows-only application.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+
+    <!-- Warnings are how the compiler tells you the design is wrong. Suppressing them
+         to get a clean build log is how a codebase stops being trustworthy. -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>6</WarningLevel>
+
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Company>TTS Mastery</Company>
+    <Product>Local TTS Studio</Product>
+    <Authors>TTS Mastery</Authors>
+    <Copyright>Copyright © 2026</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+</Project>
