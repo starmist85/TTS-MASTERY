@@ -1,0 +1,97 @@
+<!--
+    App.xaml — wiring the theme up.
+
+    ORDER MATTERS. Controls.xaml resolves {StaticResource Radius.Sm}, {StaticResource
+    Text.Body} and friends from Tokens.xaml, and StaticResource lookup only searches
+    dictionaries merged *before* it. So the order is always:
+
+        Palette.<Theme>.xaml   (index 0 — the one that gets swapped at runtime)
+        Tokens.xaml
+        Controls.xaml
+
+    Keeping the palette at index 0 is what makes ThemeService below a two-line swap.
+-->
+<Application x:Class="YourApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Theme/Palette.Dark.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Theme/Tokens.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Theme/Controls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+
+<!--
+================================================================================
+ ThemeService — runtime light/dark swap. Put this in its own .cs file.
+
+ Because every style binds colours with DynamicResource and no view hardcodes one,
+ replacing the palette dictionary re-themes the entire live visual tree with no
+ restart and no per-window code.
+
+ On Windows 11 also call the DWM dark-title-bar attribute for each open window
+ when the theme changes — see references/window-chrome.md. A dark app with a
+ white caption bar is the most common "why does this look broken" report.
+================================================================================
+
+public enum AppTheme { Dark, Light }
+
+public interface IThemeService
+{
+    AppTheme Current { get; }
+    void Apply(AppTheme theme);
+}
+
+public sealed class ThemeService : IThemeService
+{
+    private const int PaletteIndex = 0;   // must stay first — see the ORDER note above
+
+    public AppTheme Current { get; private set; } = AppTheme.Dark;
+
+    public void Apply(AppTheme theme)
+    {
+        var uri = new Uri(
+            theme == AppTheme.Dark
+                ? "pack://application:,,,/Theme/Palette.Dark.xaml"
+                : "pack://application:,,,/Theme/Palette.Light.xaml");
+
+        var merged = Application.Current.Resources.MergedDictionaries;
+        merged[PaletteIndex] = new ResourceDictionary { Source = uri };
+        Current = theme;
+
+        foreach (Window w in Application.Current.Windows)
+            WindowChromeHelper.ApplyDarkTitleBar(w, theme == AppTheme.Dark);
+    }
+}
+
+================================================================================
+ MainWindow — the four attributes that decide whether the app looks crisp.
+
+ UseLayoutRounding + SnapsToDevicePixels keep 1px borders as 1px at 125%/150%
+ display scaling instead of blurry 2px smears. TextFormattingMode="Display"
+ sharpens small UI text; if you are rendering long-form prose or large display
+ type, switch that one to "Ideal" for better glyph spacing.
+================================================================================
+
+<Window x:Class="YourApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Your App" Height="820" Width="1360"
+        MinHeight="600" MinWidth="1024"
+        Background="{DynamicResource Brush.Surface.Base}"
+        Foreground="{DynamicResource Brush.Text.Primary}"
+        FontFamily="{StaticResource Font.Ui}"
+        FontSize="{StaticResource Size.Body}"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType">
+    ...
+</Window>
+-->

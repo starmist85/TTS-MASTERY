@@ -1,0 +1,65 @@
+# ── Build output ──────────────────────────────────────────────────────────────
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/
+*.dll
+*.pdb
+*.cache
+
+# ── Installer generated content ───────────────────────────────────────────────
+msi-installers/staging/
+msi-installers/output/
+msi-installers/**/*.wixpdb
+msi-installers/**/*.wixobj
+
+# ── Python runtimes and engine environments (rebuilt by scripts) ───────────────
+runtimes/
+runtime/
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+pip-wheel-metadata/
+wheels/
+
+# ── Upstream TTS repositories (cloned separately, not vendored) ────────────────
+tts-libraries/
+
+# ── Model weights and large binaries ──────────────────────────────────────────
+models/
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.onnx
+*.gguf
+
+# ── Generated audio, caches, logs ─────────────────────────────────────────────
+generations/
+cache/
+logs/
+*.log
+*.wav
+*.mp3
+*.flac
+*.npy
+
+# ── Tools ─────────────────────────────────────────────────────────────────────
+tools/ffmpeg/
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+Thumbs.db
+desktop.ini
+.DS_Store

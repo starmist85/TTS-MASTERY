@@ -1,0 +1,186 @@
+<!--
+    Tokens.xaml — everything that is not a color.
+
+    These are StaticResource-friendly (they never change at runtime), so styles
+    reference them with StaticResource while referencing brushes with
+    DynamicResource. That split matters: DynamicResource carries a per-element
+    lookup cost, and you only need it where live theme swapping happens.
+
+    The scales are deliberately short. A six-step type scale and a seven-step space
+    scale are enough to build anything, and being forced to pick from a short list
+    is what produces visual consistency across screens built weeks apart.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <!--  TYPE FAMILY  ──────────────────────────────────────────────────────────
+          Segoe UI Variable Text is the Windows 11 UI face; Segoe UI is the Win10
+          fallback and WPF resolves the comma list left to right. Mono is for paths,
+          logs, hashes and anything the user may need to compare character by
+          character.                                                              -->
+    <FontFamily x:Key="Font.Ui">Segoe UI Variable Text, Segoe UI, Segoe UI Variable Display</FontFamily>
+    <FontFamily x:Key="Font.Display">Segoe UI Variable Display, Segoe UI Semibold, Segoe UI</FontFamily>
+    <FontFamily x:Key="Font.Mono">Cascadia Mono, Consolas, Courier New</FontFamily>
+    <FontFamily x:Key="Font.Icon">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+
+    <!--  TYPE SIZES  ───────────────────────────────────────────────────────────
+          WPF sizes are device-independent pixels, so these are 1:1 with CSS px at
+          100% scaling. Body is 14: 12 is too small for sustained reading in a
+          desktop tool, 15+ starts to feel like a web page.                        -->
+    <sys:Double x:Key="Size.Display">28</sys:Double>
+    <sys:Double x:Key="Size.Title">20</sys:Double>
+    <sys:Double x:Key="Size.Subtitle">16</sys:Double>
+    <sys:Double x:Key="Size.Body">14</sys:Double>
+    <sys:Double x:Key="Size.Caption">12</sys:Double>
+    <sys:Double x:Key="Size.Micro">11</sys:Double>
+
+    <!--  SPACE  ────────────────────────────────────────────────────────────────
+          A 4px grid. Use these as Margin/Padding values rather than typing numbers:
+          it is the single highest-leverage habit for making screens line up.      -->
+    <sys:Double x:Key="Space.Xxs">2</sys:Double>
+    <sys:Double x:Key="Space.Xs">4</sys:Double>
+    <sys:Double x:Key="Space.Sm">8</sys:Double>
+    <sys:Double x:Key="Space.Md">12</sys:Double>
+    <sys:Double x:Key="Space.Lg">16</sys:Double>
+    <sys:Double x:Key="Space.Xl">24</sys:Double>
+    <sys:Double x:Key="Space.Xxl">32</sys:Double>
+    <sys:Double x:Key="Space.Huge">48</sys:Double>
+
+    <Thickness x:Key="Pad.Page">24</Thickness>
+    <Thickness x:Key="Pad.Card">16</Thickness>
+    <Thickness x:Key="Pad.Control">12,0,12,0</Thickness>
+    <Thickness x:Key="Pad.Button">16,0,16,0</Thickness>
+    <Thickness x:Key="Pad.Popup">6</Thickness>
+    <Thickness x:Key="Gap.FormRow">0,0,0,16</Thickness>
+    <Thickness x:Key="Gap.LabelToControl">0,0,0,6</Thickness>
+    <Thickness x:Key="Gap.Card">0,0,12,12</Thickness>
+
+    <!--  RADII  ────────────────────────────────────────────────────────────────
+          Three, plus a pill. Sm for inputs/buttons, Md for cards/panels, Lg for
+          dialogs and popovers. Anything with a fourth radius on the same screen
+          reads as accidental.                                                     -->
+    <CornerRadius x:Key="Radius.Xs">4</CornerRadius>
+    <CornerRadius x:Key="Radius.Sm">6</CornerRadius>
+    <CornerRadius x:Key="Radius.Md">10</CornerRadius>
+    <CornerRadius x:Key="Radius.Lg">14</CornerRadius>
+    <CornerRadius x:Key="Radius.Pill">999</CornerRadius>
+
+    <!--  CONTROL METRICS  ──────────────────────────────────────────────────────
+          Fixed heights keep rows of mixed controls (button + combo + text box)
+          optically aligned, which WPF will not do for you.                        -->
+    <sys:Double x:Key="Height.Control.Compact">28</sys:Double>
+    <sys:Double x:Key="Height.Control">32</sys:Double>
+    <sys:Double x:Key="Height.Control.Large">40</sys:Double>
+    <sys:Double x:Key="Height.ListRow">36</sys:Double>
+    <sys:Double x:Key="Height.TitleBar">40</sys:Double>
+    <sys:Double x:Key="Height.StatusBar">28</sys:Double>
+    <sys:Double x:Key="Width.NavRail">220</sys:Double>
+    <sys:Double x:Key="Width.NavRail.Collapsed">56</sys:Double>
+    <sys:Double x:Key="Size.Icon.Sm">14</sys:Double>
+    <sys:Double x:Key="Size.Icon">16</sys:Double>
+    <sys:Double x:Key="Size.Icon.Lg">20</sys:Double>
+
+    <!--  MOTION  ───────────────────────────────────────────────────────────────
+          Micro for hover/press, Standard for state transitions, Enter for things
+          appearing. Past ~300ms an animation stops reading as polish and starts
+          reading as lag.                                                          -->
+    <Duration x:Key="Duration.Micro">0:0:0.09</Duration>
+    <Duration x:Key="Duration.Standard">0:0:0.15</Duration>
+    <Duration x:Key="Duration.Enter">0:0:0.24</Duration>
+    <CubicEase x:Key="Ease.Out" EasingMode="EaseOut"/>
+    <CubicEase x:Key="Ease.InOut" EasingMode="EaseInOut"/>
+
+    <!--  ELEVATION  ────────────────────────────────────────────────────────────
+          Shadows are a per-element render pass; they are for popups, dialogs and
+          drag previews only. Never put one inside an ItemTemplate — a 200-row list
+          with a shadow per row will visibly stutter while scrolling.              -->
+    <DropShadowEffect x:Key="Shadow.Popup" BlurRadius="18" ShadowDepth="4"
+                      Direction="270" Opacity="0.35" Color="#FF000000"
+                      RenderingBias="Performance"/>
+    <DropShadowEffect x:Key="Shadow.Dialog" BlurRadius="32" ShadowDepth="8"
+                      Direction="270" Opacity="0.45" Color="#FF000000"
+                      RenderingBias="Performance"/>
+
+    <!--  TEXT STYLES  ──────────────────────────────────────────────────────────
+          Named text roles beat ad-hoc FontSize/Foreground pairs on every TextBlock.
+          Style.Body is the implicit default applied to every unstyled TextBlock in
+          Controls.xaml, so most text needs no style attribute at all.             -->
+    <Style x:Key="Text.Display" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Display}"/>
+        <Setter Property="FontSize" Value="{StaticResource Size.Display}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+    </Style>
+
+    <Style x:Key="Text.Title" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Display}"/>
+        <Setter Property="FontSize" Value="{StaticResource Size.Title}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+    </Style>
+
+    <Style x:Key="Text.Subtitle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}"/>
+        <Setter Property="FontSize" Value="{StaticResource Size.Subtitle}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
+    </Style>
+
+    <Style x:Key="Text.Body" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}"/>
+        <Setter Property="FontSize" Value="{StaticResource Size.Body}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+    </Style>
+
+    <Style x:Key="Text.BodyStrong" TargetType="TextBlock" BasedOn="{StaticResource Text.Body}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <!-- Labels, metadata, table column headers. Secondary tone is what separates a
+         calm information hierarchy from a wall of equally loud text. -->
+    <Style x:Key="Text.Label" TargetType="TextBlock" BasedOn="{StaticResource Text.Body}">
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
+    </Style>
+
+    <Style x:Key="Text.Caption" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}"/>
+        <Setter Property="FontSize" Value="{StaticResource Size.Caption}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
+    </Style>
+
+    <Style x:Key="Text.Hint" TargetType="TextBlock" BasedOn="{StaticResource Text.Caption}">
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Tertiary}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <!-- Prose: the only place TextWrapping is on by default, with a measure cap.
+         Lines longer than ~80 characters are measurably harder to read. -->
+    <Style x:Key="Text.Prose" TargetType="TextBlock" BasedOn="{StaticResource Text.Body}">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="MaxWidth" Value="620"/>
+        <Setter Property="LineHeight" Value="21"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
+    </Style>
+
+    <Style x:Key="Text.Mono" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Mono}"/>
+        <Setter Property="FontSize" Value="{StaticResource Size.Caption}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+    </Style>
+
+    <!-- Icon glyphs. Set Text to the codepoint, e.g. Text="&#xE768;" (Play). -->
+    <Style x:Key="Text.Icon" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Icon}"/>
+        <Setter Property="FontSize" Value="{StaticResource Size.Icon}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+    </Style>
+
+</ResourceDictionary>
